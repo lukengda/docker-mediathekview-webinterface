@@ -25,7 +25,8 @@ RUN \
         wget \
         vlc \
         flvstreamer \
-        ffmpeg
+        ffmpeg \
+        xdotool
 
 
 # Define software download URLs.
@@ -41,7 +42,7 @@ RUN \
     sed-patch 's/<application type="normal">/<application type="normal" title="Mediathekview">/' \
         /etc/xdg/openbox/rc.xml
 
-COPY src/startapp.sh /startapp.sh
+COPY src/*.sh /
 
 # clear temporary build directory
 RUN rm /tmp/*
