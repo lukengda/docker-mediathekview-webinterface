@@ -37,6 +37,15 @@ docker run -it -p 127.0.0.1:5800:5800 --rm \
     conrad784/mediathekview-webinterface:latest
 ```
 
+### Updating Filmliste and automatic downloads
+
+You can configure "Downloads aus Abos sofort starten" in the MediathekView settings so that movies get downloaded automatically as they are discovered when the movie list is (re)loaded. This will start downloads immediatly.
+
+To regularely reload the server list, there are two options utilizing scheduled tasks on the docker host. This can be implemented using e.g. unix cron jobs or synology scheduled tasks:
+
+* Restart the whole container: `docker restart <container_name>`
+* Send the reload command to MediathekView: `docker exec <container_name> /refresh-movie-list.sh`
+
 ## Developing
 Make your changes, then build new version:
 `docker build --rm -t mymediathek -f Dockerfile .`
